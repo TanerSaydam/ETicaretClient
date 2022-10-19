@@ -13,7 +13,7 @@ export class DashboardsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._alertify.message("Deneme mesaj", { delay:5 })
+    this._alertify.message("Deneme mesaj", { delay:5, messageType: MessageType.Success })
   }
 
 }

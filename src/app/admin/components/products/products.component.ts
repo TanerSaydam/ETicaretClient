@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Create_Product } from 'src/app/contracts/create_product';
+import { HttpClientService } from 'src/app/services/common/http-client.service';
+import { ListComponent } from './list/list.component';
 
 @Component({
   selector: 'app-products',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _client: HttpClientService
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
+  }
+
+  @ViewChild(ListComponent) listComponents: ListComponent;
+
+  createdProduct(event: Create_Product){
+    this.listComponents.getProducts();
   }
 
 }
