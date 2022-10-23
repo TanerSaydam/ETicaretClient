@@ -12,13 +12,7 @@ import { ProductService } from 'src/app/services/common/models/product.service';
 export class CreateComponent implements OnInit {
 
   @Output() createdProduct: EventEmitter<any> = new EventEmitter<any>();
-  @Output() fileUploadOptions: Partial<FileUploadOptions> = {
-    action: "upload",
-    controller: "products",
-    explanation: "Resimleri sürükleyin veya seçin",
-    isAdminPage: true, 
-    accept: ".png, .jpg, .jpeg"   
-  }; 
+    
   constructor(
     private _product: ProductService,
     private _alertify: AlertifyService

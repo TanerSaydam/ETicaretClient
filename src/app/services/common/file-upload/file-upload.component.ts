@@ -41,11 +41,11 @@ export class FileUploadComponent {
         queryString: this.options.queryString,
         headers:new HttpHeaders({"responseType": "blob"})
       }, fileData).subscribe({
-        next: (res)=> {
+        next: (res)=> {          
           this._alertify.message("Dosyalar başarıyla yüklendi", {
             dismissOthers: true,
             messageType: MessageType.Success,
-            position: Position.TopRight
+            position: Position.TopRight            
           })
         },
         error: (err: HttpErrorResponse)=> {

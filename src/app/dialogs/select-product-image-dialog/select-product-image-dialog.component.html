@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Product Images</h2>
+<mat-dialog-content class="mat-typography">
+    <app-file-upload [options]="options"></app-file-upload>
+
+    <mat-card id='card-{{image.id}}' class="example-card mt-2 mx-2" *ngFor="let image of images">
+        <mat-card-header>
+
+        </mat-card-header>
+        <mat-card-content class="mx-2 mt-2">
+            <img mat-card-image [src]="image.path"
+                alt="Photo of a Shiba Inu" width="200px" height="170px">
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button class="btn btn-danger w-100" (click)="deleteImage(image.id, $event)">
+                <img src="/assets/39-trash-solid.gif" width="20px">                
+                Delete
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
