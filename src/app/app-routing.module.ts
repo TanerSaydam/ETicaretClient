@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren:()=> import("./ui/components/baskets/baskets.module").then(m=> m.BasketsModule)
   },
   {
+    path: "register",
+    loadChildren:()=> import("./ui/components/register/register.module").then(m=> m.RegisterModule)
+  },
+  {
     path: "products",
     loadChildren:()=> import("./ui/components/products/products.module").then(m=> m.ProductsModule)
   },  

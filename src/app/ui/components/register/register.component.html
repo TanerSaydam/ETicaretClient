@@ -1,0 +1,45 @@
+<div class="col-md-4 offset-4">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <div class="form-group mt-2">
+            Ad Soyad
+            <input type="text" formControlName="adSoyad" [class]="changeInputClassToValidStatus('adSoyad')">
+            <div class="invalid-feedback">
+                Name is required!
+            </div>
+        </div>
+        <div class="form-group mt-2">
+            Kullanıcı Adı
+            <input type="text" formControlName="kullaniciAdi" [class]="changeInputClassToValidStatus('kullaniciAdi')">
+            <div class="invalid-feedback">
+                User name is required!
+            </div>
+        </div>
+        <div class="form-group mt-2">
+            Email
+            <input type="email" formControlName="email" [class]="changeInputClassToValidStatus('email')">
+            <div class="invalid-feedback">
+                Email is required!
+            </div>
+        </div>
+        <div class="form-group mt-2">
+            Password
+            <input type="password" formControlName="sifre" [class]="changeInputClassToValidStatus('sifre')">
+            <div class="invalid-feedback">
+                Password is reqiured!
+            </div>
+        </div>
+        <div class="form-group mt-2">
+            Password Repeat
+            <input type="password" formControlName="sifreTekrar" [class]="changeInputClassToValidStatus('sifreTekrar')">
+            <div class="invalid-feedback">
+                Password is reqiured!
+            </div>
+            <div class="error" *ngIf="registerForm.hasError('notSame')">
+                Şifreler eşleşmiyor!
+            </div>
+        </div>        
+        <div class="form-group mt-4">
+            <button [disabled]="!registerForm.valid" type="submit" class="btn btn-primary w-100">Kayıt Ol</button>
+        </div>
+    </form>
+</div>
