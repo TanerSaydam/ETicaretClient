@@ -1,7 +1,7 @@
 export class User{
-    adSoyad: string;
-    kullaniciAdi: string;
+    nameUserName: string;
+    userName: string;
     email: string;
-    sifre: string;
-    sifreTekrar: string;
+    password: string;
+    passwordConfirm: string;
 }

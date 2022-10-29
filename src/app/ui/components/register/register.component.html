@@ -2,14 +2,14 @@
     <form [formGroup]="registerForm" (ngSubmit)="register()">
         <div class="form-group mt-2">
             Ad Soyad
-            <input type="text" formControlName="adSoyad" [class]="changeInputClassToValidStatus('adSoyad')">
+            <input type="text" formControlName="nameSurName" [class]="changeInputClassToValidStatus('nameSurName')">
             <div class="invalid-feedback">
                 Name is required!
             </div>
         </div>
         <div class="form-group mt-2">
             Kullanıcı Adı
-            <input type="text" formControlName="kullaniciAdi" [class]="changeInputClassToValidStatus('kullaniciAdi')">
+            <input type="text" formControlName="userName" [class]="changeInputClassToValidStatus('userName')">
             <div class="invalid-feedback">
                 User name is required!
             </div>
@@ -23,14 +23,14 @@
         </div>
         <div class="form-group mt-2">
             Password
-            <input type="password" formControlName="sifre" [class]="changeInputClassToValidStatus('sifre')">
+            <input type="password" formControlName="password" [class]="changeInputClassToValidStatus('password')">
             <div class="invalid-feedback">
                 Password is reqiured!
             </div>
         </div>
         <div class="form-group mt-2">
             Password Repeat
-            <input type="password" formControlName="sifreTekrar" [class]="changeInputClassToValidStatus('sifreTekrar')">
+            <input type="password" formControlName="passwordConfirm" [class]="changeInputClassToValidStatus('passwordConfirm')">
             <div class="invalid-feedback">
                 Password is reqiured!
             </div>

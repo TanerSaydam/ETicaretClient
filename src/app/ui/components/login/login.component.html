@@ -1,0 +1,22 @@
+<div class="col-md-4 offset-4">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">       
+        <div class="form-group mt-2">
+            Kullanıcı Adı & Email
+            <input type="text" formControlName="usernameOrEmail" [class]="changeInputClassToValidStatus('usernameOrEmail')">
+            <div class="invalid-feedback">
+                User name is required!
+            </div>
+        </div>       
+        <div class="form-group mt-2">
+            Password
+            <input type="password" formControlName="password" [class]="changeInputClassToValidStatus('password')">
+            <div class="invalid-feedback">
+                Password is reqiured!
+            </div>
+        </div>            
+        <div class="form-group mt-4">
+            <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary w-100">Giriş Yap</button>
+        </div>
+    </form>
+    <asl-google-signin-button></asl-google-signin-button>
+</div>
