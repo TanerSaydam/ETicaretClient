@@ -77,35 +77,7 @@ export class LoginComponent implements OnInit {
         position: Position.TopRight,
         messageType: MessageType.Error
       });
-  }
-
-  async googleLogin(model: any){    
-    if (!this.loginForm.valid) 
-      return;
-    debugger
-    const result =  await this._user.googleLogin(model, ()=> {
-      this._auth.identityCheck();
-      this._activated.queryParams.subscribe({
-        next: (res)=> {
-          const returnUrl = res["returnUrl"];
-          if(returnUrl)
-            this._router.navigateByUrl(returnUrl)
-        }
-      })
-    });
-    if(result.succeeded)
-      this._alertify.message(result.message, {
-        dismissOthers: true,
-        position: Position.TopRight,
-        messageType: MessageType.Success
-      });
-    else
-      this._alertify.message(result.message, {
-        dismissOthers:true,
-        position: Position.TopRight,
-        messageType: MessageType.Error
-      });
-  }
+  }  
 
   changeInputClassToValidStatus(name: string){   
     if (this.loginForm.controls[name].touched) {
