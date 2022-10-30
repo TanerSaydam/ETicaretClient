@@ -17,7 +17,7 @@ export class AppComponent {
   }
 
   signOut(){
-   localStorage.removeItem("accessToken");
+   localStorage.removeItem("accessToken");   
    this._router.navigateByUrl("/");
    this._auth.identityCheck();
   }

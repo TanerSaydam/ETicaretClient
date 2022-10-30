@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router} from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { AuthService } from 'src/app/services/common/auth.service';
 import { UserService } from 'src/app/services/common/models/user.service';
@@ -14,6 +15,7 @@ import { UserService } from 'src/app/services/common/models/user.service';
 })
 export class LoginComponent implements OnInit {
  
+  unSubscribe = new Subject<void>;
   loginForm: FormGroup;
   constructor(
     private _user: UserService,
@@ -27,12 +29,17 @@ export class LoginComponent implements OnInit {
     this._social.authState.subscribe({
       next: (user: SocialUser)=> {
         console.log(user);
-        let api = "https://localhost:7109/api/Users/GoogleLogin"
-        this._http.post<any>(api, user).subscribe({
+        let api = "https://localhost:7109/api/Auth/GoogleLogin"
+        this._http.post<any>(api, user).pipe(
+          takeUntil(this.unSubscribe)
+        ).subscribe({
           next: (res)=> {
             localStorage.setItem("accessToken", res.accessToken);
+            localStorage.setItem("refreshToken", res.refreshToken);
             this._auth.identityCheck();
             this._router.navigate(["/admin"])
+            this.unSubscribe.next();
+            this.unSubscribe.complete();
           }
         })
         //this.googleLogin(user);
@@ -65,7 +72,7 @@ export class LoginComponent implements OnInit {
         }
       })
     });
-    if(result.succeeded)
+    if(result?.succeeded)
       this._alertify.message(result.message, {
         dismissOthers: true,
         position: Position.TopRight,

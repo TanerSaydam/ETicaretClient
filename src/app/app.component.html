@@ -20,7 +20,7 @@
           <a class="nav-link" aria-current="page" routerLink="/register" *ngIf="!_auth.isAuthenticated">Kayıt Ol</a>
         </li> 
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/login" *ngIf="!_auth.isAuthenticated">Giriş Yap</a>
+          <a class="nav-link" aria-current="page" href="/login" *ngIf="!_auth.isAuthenticated">Giriş Yap</a>
         </li> 
         <li class="nav-item">
           <a class="btn btn-outline-danger mx-2" aria-current="page" (click)="signOut()" *ngIf="_auth.isAuthenticated">Çıkış Yap</a>
